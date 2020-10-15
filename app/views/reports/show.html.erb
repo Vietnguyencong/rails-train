@@ -1,0 +1,57 @@
+<div class="container"> 
+welcome to user: <%=@report.user.email.split('@')[0]%>
+<p>
+  <strong>User:</strong>
+  <%= @report.user.email %>
+</p>
+<p>
+  <strong>Title:</strong>
+  <%= @report.title %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @report.body %>
+</p>
+
+
+<%= link_to 'Edit', edit_report_path(@report) %> |
+<%= link_to 'Back', reports_path %>
+
+<hr>
+<h1>Listing links</h1>
+
+<table>
+  <tr>
+    <th>Report</th>
+
+    <th>Name link</th>
+    <th>Status</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @links.each do |link| %>
+  <tr>
+    <td><%= link.report %></td>
+
+    <td><%= link.name_link %></td>
+    <td><%= link.status %></td>
+    <td><%= link_to 'Show', [link.report, link] %></td>
+    <%if link.persisted?%>
+      <td><%= link_to 'Edit', edit_report_link_path(link.report, link) %></td>
+    <%end%>
+    <td><%= link_to 'Destroy', [link.report, link], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<hr>
+<h1>New link</h1>
+
+<%= render 'links/form' %>
+
+</div>

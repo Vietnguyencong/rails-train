@@ -1,0 +1,19 @@
+<p>
+  <b>Report:</b>
+  <%= @link.report %>
+</p>
+
+<p>
+  <b>Name link:</b>
+  <%= @link.name_link %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @link.status %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_report_link_path(@link.report, @link) %> 
+<%= link_to 'Back', report_links_path(@link.report) %>
